@@ -65,6 +65,7 @@ import com.quotes.app.models.QuotesModel
                     Text(
                         text = quote.author,
                         style = MaterialTheme.typography.bodySmall,
+                        fontFamily = FontFamily(Font(R.font.montserrat_regular)),
                         modifier = Modifier.padding(top = 4.dp)
                     )
 
