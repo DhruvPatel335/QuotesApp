@@ -31,10 +31,13 @@ import com.quotes.app.models.QuotesModel
 
 
     @Composable
-    fun QuotesListItem(quote:QuotesModel, onClick:()->Unit) {
+    fun QuotesListItem(quote:QuotesModel, onClick:(quote:QuotesModel)->Unit) {
         Card(
             elevation = CardDefaults.cardElevation(4.dp),
-            modifier = Modifier.padding(8.dp).clickable { onClick() }
+            modifier = Modifier.padding(8.dp).clickable { onClick(quote) },
+            colors = CardDefaults.cardColors(
+                containerColor = Color(0xFFFAFAFA),
+            ),
         ) {
             Row(modifier = Modifier.padding(16.dp)) {
                 Image(

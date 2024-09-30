@@ -33,12 +33,22 @@ class MainActivity : ComponentActivity() {
 @Composable
 fun App() {
     if (DataManager.isDataLoaded.value){
-        QuoteListScreen(data = DataManager.data) {
-            
+        if (DataManager.currentPage.value == Pages.LISTING){
+            QuoteListScreen(data = DataManager.data) {
+                    DataManager.switchPage(it)
+            }
+        }else{
+            DataManager.currentQuote?.let { QuotesDetail(quote = it) }
         }
+
     }else{
         Box(contentAlignment = Alignment.Center, modifier = Modifier.fillMaxSize(1f)){
             Text(text = "Loading...", style = MaterialTheme.typography.titleLarge)
         }
     }
+}
+
+enum class Pages{
+    LISTING,
+    DETAILS
 }

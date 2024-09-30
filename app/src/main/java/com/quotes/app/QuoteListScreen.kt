@@ -15,15 +15,13 @@ import androidx.compose.ui.unit.dp
 import com.quotes.app.models.QuotesModel
 
 @Composable
-fun QuoteListScreen(data: Array<QuotesModel>,onClick:()->Unit) {
+fun QuoteListScreen(data: Array<QuotesModel>,onClick:(quote:QuotesModel)->Unit) {
     Column() {
         Text(text = "Quotes App", style = MaterialTheme.typography.titleMedium, textAlign = TextAlign.Center, modifier = Modifier
             .padding(8.dp, 24.dp)
             .fillMaxWidth(1f), fontFamily = FontFamily(
             Font(R.font.montserrat_regular)
         ))
-        QuoteList(data = data) {
-            onClick()
-        }
+        QuoteList(data = data, onClick)
     }
 }
